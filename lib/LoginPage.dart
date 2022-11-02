@@ -11,6 +11,9 @@ class loginPage extends StatefulWidget {
 class _loginPageState extends State<loginPage> {
   final formKey = GlobalKey<FormState>();
 
+  var _studentIDController = TextEditingController();
+  var _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,6 +30,7 @@ class _loginPageState extends State<loginPage> {
             width: 300,
             margin: const EdgeInsets.only(top: 10.0),
             child: TextFormField(
+              controller: _studentIDController,
               decoration: const InputDecoration(
                 icon: Icon(Icons.person),
                 labelText: 'Banner/Student ID',
@@ -37,6 +41,7 @@ class _loginPageState extends State<loginPage> {
             width: 300,
             margin: const EdgeInsets.only(top: 10.0),
             child: TextFormField(
+              controller: _passwordController,
               decoration: const InputDecoration(
                 icon: Icon(Icons.key),
                 labelText: 'Password',
