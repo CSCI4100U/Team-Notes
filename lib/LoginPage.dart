@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'RegisterPage.dart';
 
 class loginPage extends StatefulWidget {
   const loginPage({Key? key}) : super(key: key);
@@ -45,15 +46,21 @@ class _loginPageState extends State<loginPage> {
           Container(
             margin: const EdgeInsets.only(top: 60.0),
             child: ElevatedButton(
-              onPressed: () {},
-              child: Text("Login"),
+              onPressed: () {
+              },
+              child: const Text("Login"),
             ),
           ),
           Container(
             margin: const EdgeInsets.only(top: 10.0),
             child: ElevatedButton(
-              onPressed: () {},
-              child: Text("Register"),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RegisterPage()),
+                );
+              },
+              child: const Text("Register"),
             ),
           ),
         ],
