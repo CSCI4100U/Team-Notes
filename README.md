@@ -2,11 +2,11 @@
 
 Group members (3-5) (no Student IDs, only names and github usernames):
 
-1. Ginthushan
+1. Ginthushan Kandasamy (Ginthushan)
 
 2. Jack Lin (39M8ku)
 
-3. 
+3. Meghna Krishnan (meghkris)
 
 4. 
 
