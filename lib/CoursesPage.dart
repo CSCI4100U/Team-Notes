@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
-import 'main(2).dart';
+import 'NotesPage.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'notfication_api.dart';
+
 
 class coursesPage extends StatefulWidget {
+
+
+  @override
+  void initState(){
+    var initializationSettingsAndroid = AndroidInitializationSettings('app_icon.png');
+
+  }
+
   List courses;
   coursesPage({Key? key, required this.courses}) : super(key: key);
 
@@ -49,6 +60,12 @@ class _coursesPageState extends State<coursesPage> {
                                   padding: const EdgeInsets.only(right: 15.0),
                                   child: FloatingActionButton(
                                     onPressed: (){
+                                      NotificationApi?.showNotification(
+                                          title: 'Study Hard',
+                                          body:
+                                          'Make sure you take your notes!',
+                                        payload: 'sarah.abs'
+                                      );
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -83,7 +100,7 @@ class _coursesPageState extends State<coursesPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const Notes(sid: '100000001',)
+                                          builder: (context) => Notes(sid: '100001')
                                       ),
                                     );},
                                   child: const Icon(Icons.add),
