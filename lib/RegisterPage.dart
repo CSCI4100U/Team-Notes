@@ -1,3 +1,7 @@
+//Ginthushan Kandasamy
+//11/10/2022
+//To this page is the UI for the user to register their account into the database
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -122,6 +126,8 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
+  //Adds all the user's input they filled out in the textform fields and adds it to the
+  //logins database which will allow them to login with their newly created account
   Future register() async {
 
     courses.add(_course1.text);
@@ -140,6 +146,7 @@ class RegisterPage extends StatelessWidget {
     FirebaseFirestore.instance.collection('logins').doc().set(data);
   }
 
+  //Checks to see if any of the textformfields are empty if so it returns false, if they are filled it returns true
   bool _validate(){
     if (_course1.text.isNotEmpty |
     _course2.text.isNotEmpty |

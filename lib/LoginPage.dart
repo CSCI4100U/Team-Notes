@@ -1,3 +1,8 @@
+//Ginthushan Kandasamy
+//11/10/2022
+//This is the login ui where the user will login, if they do not have an account
+// they can hit the register button and make one
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'RegisterPage.dart';
