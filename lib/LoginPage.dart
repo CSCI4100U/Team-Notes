@@ -5,8 +5,10 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/CoursesPage.dart';
+import 'package:untitled1/notes.dart';
 import 'RegisterPage.dart';
-import 'CoursesPage.dart';
+import 'NotesPage.dart';
 
 class loginPage extends StatefulWidget {
   const loginPage({Key? key}) : super(key: key);
@@ -146,8 +148,8 @@ class _loginPageState extends State<loginPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => coursesPage(courses: courses,)),
-        );
+              builder: (context) => coursesPage(courses: courses),
+        ));
       }
       else{
         _studentIDController.clear();

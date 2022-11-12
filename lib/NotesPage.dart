@@ -2,62 +2,198 @@ import 'package:flutter/material.dart';
 import 'notes.dart';
 
 class Notes extends StatefulWidget {
-  const Notes({super.key, required this.sid});
-
+  List courses;
+  Notes({Key? key, required this.sid, required this.courses}): super(key: key);
   final String sid;
 
   @override
-  State<Notes> createState() => _NotesState();
+  State<Notes> createState() => _NotesState(courses: courses);
 }
 
+
 class _NotesState extends State<Notes> {
+  List courses;
+  _NotesState({required this.courses});
   Note note2 = new Note(id: 2, sid: '1', course: 'CSCI102');
   Note note = new Note(id: 1, sid: '1', course: 'CSCI101');
   @override
   Widget build(BuildContext context) {
+    String text = courses[0].toString();
+    List<String> allCourses = text.split(',');
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.sid + ' Notes'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text(
-                'Display Note Categories here with onclick to load note details page:',
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NoteDetails(note)),
-                );
-              },
-              child: Container(
-                margin: EdgeInsets.all(10),
-                color: Colors.green,
-                child: Text(note.toMap()['course']),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NoteDetails(note2)),
-                );
-              },
-              child: Container(
-                margin: EdgeInsets.all(10),
-                color: Colors.green,
-                child: Text(note2.toMap()['course']),
-              ),
-            ),
-          ],
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: const Text('Courses Page'),
         ),
-      ),
+        body: Container(
+          alignment: Alignment.center,
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Container(
+                          margin: const EdgeInsets.only(top: 50.0),
+                          height: 100,
+                          color: Colors.orangeAccent.withOpacity(0.8),
+                          child: Row(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  allCourses[0],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 25),
+                                ),
+                              ),
+                              const Spacer(),
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: FloatingActionButton(
+                                    onPressed: (){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => NoteDetails(note)
+                                        ),
+                                      );},
+                                    child: const Icon(Icons.add),
+                                  )
+                              )
+                            ],
+                          )
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(top: 50.0),
+                          height: 100,
+                          color: Colors.blueAccent.withOpacity(0.8),
+                          child: Row(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  allCourses[1],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 25),
+                                ),
+                              ),
+                              const Spacer(),
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: FloatingActionButton(
+                                    onPressed: (){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => NoteDetails(note)
+                                        ),
+                                      );},
+                                    child: const Icon(Icons.add),
+                                  )
+                              )
+                            ],
+                          )
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(top: 50.0),
+                          height: 100,
+                          color: Colors.orangeAccent.withOpacity(0.8),
+                          child: Row(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  allCourses[2],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 25),
+                                ),
+                              ),
+                              const Spacer(),
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: FloatingActionButton(
+                                    onPressed: (){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => NoteDetails(note)
+                                        ),
+                                      );},
+                                    child: const Icon(Icons.add),
+                                  )
+                              )
+                            ],
+                          )
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(top: 50.0),
+                          height: 100,
+                          color: Colors.blueAccent.withOpacity(0.8),
+                          child: Row(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  allCourses[3],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 25),
+                                ),
+                              ),
+                              const Spacer(),
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: FloatingActionButton(
+                                    onPressed: (){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => NoteDetails(note)
+                                        ),
+                                      );},
+                                    child: const Icon(Icons.add),
+                                  )
+                              )
+                            ],
+                          )
+                      ),
+                      Container(
+                          margin: const EdgeInsets.only(top: 50.0),
+                          height: 100,
+                          color: Colors.orangeAccent.withOpacity(0.8),
+                          child: Row(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  allCourses[4],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 25),
+                                ),
+                              ),
+                              const Spacer(),
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 15.0),
+                                  child: FloatingActionButton(
+                                    onPressed: (){
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => NoteDetails(note)
+                                        ),
+                                      );},
+                                    child: const Icon(Icons.add),
+                                  )
+                              )
+                            ],
+                          )
+                      ),
+                    ],
+                  )
+              ),
+            ],
+          ),
+        )
     );
   }
 }
