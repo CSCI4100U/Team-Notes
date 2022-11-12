@@ -8,7 +8,7 @@ Group members (3-5) (no Student IDs, only names and github usernames):
 
 3. Meghna Krishnan (meghkris)
 
-4. 
+4. Jonithan James (jamesj0808)
 
 5.
 
