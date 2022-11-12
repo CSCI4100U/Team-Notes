@@ -31,7 +31,7 @@ environment:
 dependencies:
   path_provider: ^2.0.11
   sqflite: ^2.2.0+3
-  flutter_local_notifications: ^12.0.2
+  flutter_local_notifications: ^12.0.3
   flutter:
     sdk: flutter
 

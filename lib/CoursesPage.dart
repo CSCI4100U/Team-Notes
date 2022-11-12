@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'NotesPage.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'notfication_api.dart';
 import 'notes.dart';
+import 'noti.dart';
 
 
 class coursesPage extends StatefulWidget {
@@ -14,13 +14,21 @@ class coursesPage extends StatefulWidget {
 }
 
 class _coursesPageState extends State<coursesPage> {
+
   Note note2 = new Note(id: 2, sid: '1', course: 'CSCI102');
   Note note = new Note(id: 1, sid: '1', course: 'CSCI101');
   List courses;
   _coursesPageState({required this.courses});
 
+
+  final _notifications = Notifications();
+  String title = 'Study Hard';
+  String body = 'Make sure you take Notes!';
+  String payload = 'Test';
+
   @override
   Widget build(BuildContext context) {
+    _notifications.init();
     String text = courses[0].toString();
     List<String> allCourses = text.split(',');
     return Scaffold(
@@ -55,12 +63,7 @@ class _coursesPageState extends State<coursesPage> {
                                   padding: const EdgeInsets.only(right: 15.0),
                                   child: FloatingActionButton(
                                     onPressed: (){
-                                      NotificationApi?.showNotification(
-                                          title: 'Study Hard',
-                                          body:
-                                          'Make sure you take your notes!',
-                                        payload: 'sarah.abs'
-                                      );
+                                      _notifications.sendNotificationNow(title, body, payload);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
