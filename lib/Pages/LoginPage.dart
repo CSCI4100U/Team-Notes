@@ -9,19 +9,22 @@ import 'package:untitled1/Pages/CoursesPage.dart';
 import 'RegisterPage.dart';
 
 class loginPage extends StatefulWidget {
-  const loginPage({Key? key}) : super(key: key);
+  loginPage({Key? key, this.position}) : super(key: key);
+  var position;
 
   @override
-  State<loginPage> createState() => _loginPageState();
+  State<loginPage> createState() => _loginPageState(position: position);
 }
 
 class _loginPageState extends State<loginPage> {
+  _loginPageState({this.position});
   final formKey = GlobalKey<FormState>();
 
   var _studentIDController = TextEditingController();
   var _passwordController = TextEditingController();
   bool _validate_sid = false;
   bool _validate_pass = false;
+  var position;
 
   CollectionReference _collectionRef =
   FirebaseFirestore.instance.collection('logins');
@@ -146,10 +149,10 @@ class _loginPageState extends State<loginPage> {
         for (int i = 0; i < querySnapshot.docs.length; i++){
           courses.add(querySnapshot.docs[index].get('courses'));
         }
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) => CoursesPage(courses: courses, studentID: _studentIDController.text,),
+              builder: (context) => CoursesPage(courses: courses, studentID: _studentIDController.text,position: position,),
         ));
       }
       else{

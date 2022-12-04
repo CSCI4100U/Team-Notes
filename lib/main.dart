@@ -1,16 +1,20 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'Pages/LoginPage.dart';
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  var position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+  print(position);
 
-  runApp(MyApp());
+  runApp(MyApp(position: position,));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  MyApp({super.key, this.position});
+  var position;
 
   // This widget is the root of your application.
   @override
@@ -21,20 +25,24 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
           primarySwatch: Colors.indigo
       ),
-      home: const MyHomePage(title: 'Register/Login'),
+      home: MyHomePage(title: 'Register/Login', position: position),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  MyHomePage({super.key, required this.title, this.position});
   final String title;
+  var position;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState(position: position);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var position;
+  _MyHomePageState({this.position});
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: const loginPage(),
+      body: loginPage(position: position),
     );
   }
 }
