@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'NotesPage.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'notes.dart';
-import 'noti.dart';
+import 'Notes.dart';
+import 'Notifications_file.dart';
 
 
 class coursesPage extends StatefulWidget {
@@ -15,9 +14,6 @@ class coursesPage extends StatefulWidget {
 }
 
 class _coursesPageState extends State<coursesPage> {
-
-  Note note2 = new Note(id: 2, sid: '1', course: 'CSCI102');
-  Note note = new Note(id: 1, sid: '1', course: 'CSCI101');
   List courses;
   String studentID;
   _coursesPageState({required this.courses, required this.studentID});
@@ -53,16 +49,21 @@ class _coursesPageState extends State<coursesPage> {
                             children: [
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text(
-                                  courses[0][0],
-                                  textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 15.0),
+                                  child:
+                                    Text(
+                                      courses[0][0],
+                                      textAlign: TextAlign.start,
+                                      style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                    ),
                                 ),
                               ),
                               const Spacer(),
                               Padding(
                                   padding: const EdgeInsets.only(right: 15.0),
                                   child: FloatingActionButton(
+                                    heroTag: "btn1",
                                     onPressed: (){
                                       _notifications.sendNotificationNow(title, body, payload);
                                       Navigator.push(
@@ -85,16 +86,21 @@ class _coursesPageState extends State<coursesPage> {
                           children: [
                             Align(
                               alignment: Alignment.centerLeft,
-                              child: Text(
-                                courses[0][1],
-                                textAlign: TextAlign.start,
-                                style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                              child: Container(
+                                margin: const EdgeInsets.only(left: 15.0),
+                                child:
+                                Text(
+                                  courses[0][1],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
                             const Spacer(),
                             Padding(
                               padding: const EdgeInsets.only(right: 15.0),
                                 child: FloatingActionButton(
+                                  heroTag: "btn2",
                                   onPressed: (){
                                     Navigator.push(
                                       context,
@@ -116,16 +122,21 @@ class _coursesPageState extends State<coursesPage> {
                             children: [
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text(
-                                  courses[0][2],
-                                  textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 15.0),
+                                  child:
+                                  Text(
+                                    courses[0][2],
+                                    textAlign: TextAlign.start,
+                                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
                               const Spacer(),
                               Padding(
                                   padding: const EdgeInsets.only(right: 15.0),
                                   child: FloatingActionButton(
+                                    heroTag: "btn3",
                                     onPressed: (){
                                       Navigator.push(
                                         context,
@@ -147,16 +158,21 @@ class _coursesPageState extends State<coursesPage> {
                             children: [
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text(
-                                  courses[0][3],
-                                  textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 15.0),
+                                  child:
+                                  Text(
+                                    courses[0][3],
+                                    textAlign: TextAlign.start,
+                                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
                               const Spacer(),
                               Padding(
                                   padding: const EdgeInsets.only(right: 15.0),
                                   child: FloatingActionButton(
+                                    heroTag: "btn4",
                                     onPressed: (){
                                       Navigator.push(
                                         context,
@@ -178,16 +194,21 @@ class _coursesPageState extends State<coursesPage> {
                             children: [
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text(
-                                  courses[0][4],
-                                  textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 15.0),
+                                  child:
+                                  Text(
+                                    courses[0][4],
+                                    textAlign: TextAlign.start,
+                                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                               ),
                               const Spacer(),
                               Padding(
                                   padding: const EdgeInsets.only(right: 15.0),
                                   child: FloatingActionButton(
+                                    heroTag: "btn5",
                                     onPressed: (){
                                       Navigator.push(
                                         context,
@@ -336,6 +357,7 @@ class _NoteDetailsState extends State<NoteDetails> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: "btn1",
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.push(

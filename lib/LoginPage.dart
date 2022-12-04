@@ -6,9 +6,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/CoursesPage.dart';
-import 'package:untitled1/notes.dart';
 import 'RegisterPage.dart';
-import 'NotesPage.dart';
 
 class loginPage extends StatefulWidget {
   const loginPage({Key? key}) : super(key: key);
@@ -65,6 +63,9 @@ class _loginPageState extends State<loginPage> {
             margin: const EdgeInsets.only(top: 10.0),
             child: TextFormField(
               controller: _passwordController,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
               decoration: InputDecoration(
                 icon: Icon(Icons.key),
                 labelText: 'Password',
