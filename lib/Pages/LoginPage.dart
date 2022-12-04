@@ -5,7 +5,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/CoursesPage.dart';
+import 'package:untitled1/Pages/CoursesPage.dart';
 import 'RegisterPage.dart';
 
 class loginPage extends StatefulWidget {
@@ -149,7 +149,7 @@ class _loginPageState extends State<loginPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => coursesPage(courses: courses, studentID: _studentIDController.text,),
+              builder: (context) => CoursesPage(courses: courses, studentID: _studentIDController.text,),
         ));
       }
       else{
