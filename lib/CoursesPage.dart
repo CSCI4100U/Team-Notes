@@ -7,10 +7,11 @@ import 'noti.dart';
 
 class coursesPage extends StatefulWidget {
   List courses;
-  coursesPage({Key? key, required this.courses}) : super(key: key);
+  String studentID;
+  coursesPage({Key? key, required this.courses, required this.studentID}) : super(key: key);
 
   @override
-  State<coursesPage> createState() => _coursesPageState(courses: courses);
+  State<coursesPage> createState() => _coursesPageState(courses: courses, studentID: studentID);
 }
 
 class _coursesPageState extends State<coursesPage> {
@@ -18,7 +19,8 @@ class _coursesPageState extends State<coursesPage> {
   Note note2 = new Note(id: 2, sid: '1', course: 'CSCI102');
   Note note = new Note(id: 1, sid: '1', course: 'CSCI101');
   List courses;
-  _coursesPageState({required this.courses});
+  String studentID;
+  _coursesPageState({required this.courses, required this.studentID});
 
 
   final _notifications = Notifications();
@@ -45,7 +47,6 @@ class _coursesPageState extends State<coursesPage> {
                     scrollDirection: Axis.vertical,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(top: 50.0),
                         height: 100,
                         color: Colors.orangeAccent.withOpacity(0.8),
                           child: Row(
@@ -53,9 +54,9 @@ class _coursesPageState extends State<coursesPage> {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  allCourses[0],
+                                  courses[0][0],
                                   textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25),
+                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                                 ),
                               ),
                               const Spacer(),
@@ -67,7 +68,7 @@ class _coursesPageState extends State<coursesPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => NoteDetails(note)
+                                            builder: (context) => NoteDetails(Note(id: int.parse(studentID)+1,sid: studentID, course: courses[0][0],))
                                         ),
                                       );},
                                     child: const Icon(Icons.add),
@@ -85,9 +86,9 @@ class _coursesPageState extends State<coursesPage> {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                allCourses[1],
+                                courses[0][1],
                                 textAlign: TextAlign.start,
-                                style: const TextStyle(fontSize: 25),
+                                style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                               ),
                             ),
                             const Spacer(),
@@ -98,7 +99,7 @@ class _coursesPageState extends State<coursesPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => NoteDetails(note)
+                                          builder: (context) => NoteDetails(Note(id: int.parse(studentID)+2,sid: studentID, course: courses[0][1],))
                                       ),
                                     );},
                                   child: const Icon(Icons.add),
@@ -116,9 +117,9 @@ class _coursesPageState extends State<coursesPage> {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  allCourses[2],
+                                  courses[0][2],
                                   textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25),
+                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)
                                 ),
                               ),
                               const Spacer(),
@@ -129,7 +130,7 @@ class _coursesPageState extends State<coursesPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => NoteDetails(note)
+                                            builder: (context) => NoteDetails(Note(id: int.parse(studentID)+3,sid: studentID, course: courses[0][2],))
                                         ),
                                       );},
                                     child: const Icon(Icons.add),
@@ -147,9 +148,9 @@ class _coursesPageState extends State<coursesPage> {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  allCourses[3],
+                                  courses[0][3],
                                   textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25),
+                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                                 ),
                               ),
                               const Spacer(),
@@ -160,7 +161,7 @@ class _coursesPageState extends State<coursesPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => NoteDetails(note)
+                                            builder: (context) => NoteDetails(Note(id: int.parse(studentID)+4,sid: studentID, course: courses[0][3],))
                                         ),
                                       );},
                                     child: const Icon(Icons.add),
@@ -178,9 +179,9 @@ class _coursesPageState extends State<coursesPage> {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  allCourses[4],
+                                  courses[0][4],
                                   textAlign: TextAlign.start,
-                                  style: const TextStyle(fontSize: 25),
+                                  style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                                 ),
                               ),
                               const Spacer(),
@@ -191,7 +192,7 @@ class _coursesPageState extends State<coursesPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => NoteDetails(note)
+                                            builder: (context) => NoteDetails(Note(id: int.parse(studentID)+5,sid: studentID, course: courses[0][4],))
                                         ),
                                       );},
                                     child: const Icon(Icons.add),

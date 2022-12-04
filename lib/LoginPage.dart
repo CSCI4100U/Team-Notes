@@ -148,7 +148,7 @@ class _loginPageState extends State<loginPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => coursesPage(courses: courses),
+              builder: (context) => coursesPage(courses: courses, studentID: _studentIDController.text,),
         ));
       }
       else{

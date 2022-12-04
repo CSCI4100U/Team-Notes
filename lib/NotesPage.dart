@@ -23,7 +23,7 @@ class _NotesState extends State<Notes> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text('Courses Page'),
+          title: const Text('Notes Page'),
         ),
         body: Container(
           alignment: Alignment.center,
