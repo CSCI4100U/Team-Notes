@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
@@ -6,6 +7,11 @@ import 'package:latlong2/latlong.dart';
 
 
 import '../Map Handling/Constants.dart';
+import '../Map Handling/GeoLocation.dart';
+import '../Map Handling/GeoLocation_model.dart';
+
+
+var _model = GeoLocation_model();
 
 class MapPage extends StatefulWidget {
   MapPage({super.key, required this.title, this.position});
@@ -22,14 +28,23 @@ class _MapPageState extends State<MapPage> {
   var position;
   int name = 1;
   List mapMarkers = [];
-  List<LatLng> locations = [];
-  double? zoom;
+  List location_list = [];
 
   @override
   void initState()  {
     super.initState();
     mapController = MapController();
-    zoom = 13;
+    setList();
+  }
+
+  setList() async{
+    location_list.clear();
+    var y = await _model.getAllLocation();
+    setState(() {
+      for (GeoLocation locations in y) {
+        location_list.add(locations);
+      }
+    });
   }
 
   @override
@@ -42,57 +57,107 @@ class _MapPageState extends State<MapPage> {
         }
     );
     Geolocator.getPositionStream(
-      locationSettings: LocationSettings(
+      locationSettings: const LocationSettings(
           accuracy: LocationAccuracy.best
       ),
     ).listen((event) { });
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
         title: const Text('Flutter MapBox'),
       ),
-      body: Stack(
+      body: ListView(
         children: [
-          Container(
-            height: 350,
-            child:
-              FlutterMap(
-                options: MapOptions(
-                  minZoom: 5,
-                  maxZoom: 30,
-                  zoom: zoom!,
-                  center: LatLng(position.latitude, position.longitude),
+          Stack(
+            children: [
+              Container(
+                height: 350,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.indigo)
                 ),
-                mapController: mapController,
-                layers: [
-                  TileLayerOptions(
-                    urlTemplate:
-                    "https://api.mapbox.com/styles/v1/ginthushan/claveygzi000y14n0l1lta022/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZ2ludGh1c2hhbiIsImEiOiJjbGF2ZWZpZmUwNHZoM29wa3g3NjQxNTV4In0.722DTaAsNpziwk5eF1Zx-g",
-                    additionalOptions: {
-                      'mapStyleId': AppConstants.mapBoxStyleId,
-                      'accessToken': AppConstants.mapBoxAccessToken,
-                    },
-                  ),
-                  MarkerLayerOptions(
-                    markers: [
-                      for (int i = 0; i < mapMarkers.length; i++)
-                        Marker(
-                          height: 40,
-                          width: 40,
-                          point: mapMarkers[i].location ?? AppConstants.myLocation,
-                          builder: (_) {
-                            return GestureDetector(
-                              onTap: () {},
-                              child: Icon(Icons.place
-                              ),
-                            );
-                          },
-                        ),
+                child:
+                  FlutterMap(
+                    options: MapOptions(
+                      minZoom: 5,
+                      maxZoom: 30,
+                      zoom: 13,
+                      center: LatLng(position.latitude, position.longitude),
+                    ),
+                    mapController: mapController,
+                    layers: [
+                      TileLayerOptions(
+                        urlTemplate:
+                        "https://api.mapbox.com/styles/v1/ginthushan/claveygzi000y14n0l1lta022/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZ2ludGh1c2hhbiIsImEiOiJjbGF2ZWZpZmUwNHZoM29wa3g3NjQxNTV4In0.722DTaAsNpziwk5eF1Zx-g",
+                        additionalOptions: {
+                          'mapStyleId': AppConstants.mapBoxStyleId,
+                          'accessToken': AppConstants.mapBoxAccessToken,
+                        },
+                      ),
+                      MarkerLayerOptions(
+                        markers: [
+                          for (int i = 0; i < mapMarkers.length; i++)
+                            Marker(
+                              height: 40,
+                              width: 40,
+                              point: mapMarkers[i].location ?? AppConstants.myLocation,
+                              builder: (_) {
+                                return GestureDetector(
+                                  onTap: () {},
+                                  child: const Icon(Icons.place
+                                  ),
+                                );
+                              },
+                            ),
+                        ],
+                      ),
                     ],
                   ),
-                ],
               ),
+            ],
           ),
+          Container(
+            margin: const EdgeInsets.only(top: 5),
+            child: const Text('My Favorite Study Places',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 20,
+                fontFamily: 'Helvetica',
+                fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
+          Container(
+            /*scrollDirection: Axis.vertical,*/
+            child: DataTable(
+              columns: const <DataColumn>[
+                DataColumn(
+                    label: Text('Address')
+                ),
+                DataColumn(
+                    label: Text('City')
+                ),
+              ],
+                rows: location_list.map((location) => DataRow(
+                  onLongPress: (){
+                    setState(() {
+                      _model.deleteLocationWithAddress(location.address);
+                      setList();
+                    });
+                  },
+                  cells: <DataCell>[
+                    DataCell(
+                      Text(location.address),
+                    ),
+                    DataCell(
+                      Text(location.city),
+                    ),
+                  ],
+                )
+                ).toList()
+          ),
+          )
         ],
       ),
       floatingActionButton:
@@ -100,7 +165,6 @@ class _MapPageState extends State<MapPage> {
         onPressed: () async {
           setState(() {
             setGeoLocation(mapController.center);
-            name++;
           });
         },
         child: Icon(Icons.place),
@@ -111,17 +175,16 @@ class _MapPageState extends State<MapPage> {
   setGeoLocation(var position) async {
     List<Placemark> newPlace = await placemarkFromCoordinates(position.latitude, position.longitude);
     Placemark placeMark  = newPlace[0];
-    String address = "${placeMark.street}, ${placeMark.administrativeArea}, ${placeMark.country}";
     setState(() {
-      mapMarkers?.add(GeoLocation(name: name.toString(), address: address, location: mapController.center));
+      location_list.add(GeoLocation(address: placeMark.street, city: placeMark.locality));
+      addLocation(GeoLocation(address: placeMark.street, city: placeMark.locality));
+      print(placeMark.locality);
     });
+  }
+
+  Future addLocation(GeoLocation j) async{
+    var x;
+    x = await _model.insertLocation(j);
   }
 }
 
-class GeoLocation{
-  String? name;
-  String? address;
-  LatLng? location;
-
-  GeoLocation({this.name, this.address, this.location});
-}

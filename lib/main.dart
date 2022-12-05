@@ -8,7 +8,6 @@ Future main() async{
   await Firebase.initializeApp();
   var position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
   print(position);
-
   runApp(MyApp(position: position,));
 }
 

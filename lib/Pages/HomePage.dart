@@ -37,7 +37,7 @@ class _CoursesPageState extends State<CoursesPage> {
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: const Text('Courses Page'),
+            title: const Text('Home Page'),
             bottom: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.note)),

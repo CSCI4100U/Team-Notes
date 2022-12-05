@@ -5,7 +5,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled1/Pages/CoursesPage.dart';
+import 'package:untitled1/Pages/HomePage.dart';
 import 'RegisterPage.dart';
 
 class loginPage extends StatefulWidget {
