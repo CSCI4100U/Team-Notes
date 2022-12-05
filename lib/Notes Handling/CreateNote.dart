@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'Notes.dart';
 import '../Notification Handling/Notifications_file.dart';
 
@@ -31,7 +32,7 @@ class _CreateNoteState extends State<CreateNote> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Note'),
+        title: Text(FlutterI18n.translate(context, "node.page_title")),
       ),
       body: Container(
         margin: EdgeInsets.all(30),
@@ -50,7 +51,7 @@ class _CreateNoteState extends State<CreateNote> {
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Text(
-                      'Title: ',
+                      FlutterI18n.translate(context, "node.title"),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -61,7 +62,7 @@ class _CreateNoteState extends State<CreateNote> {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: 'Enter a Title',
+                        hintText: FlutterI18n.translate(context, "node.enter_title"),
                         border: OutlineInputBorder(
                             borderSide:
                             BorderSide(width: 1.0, color: Colors.amber))),
@@ -77,7 +78,7 @@ class _CreateNoteState extends State<CreateNote> {
                 margin: EdgeInsets.only(top: 20.0),
                 child: TextField(
                   decoration: InputDecoration(
-                      hintText: 'Enter your notes here',
+                      hintText: FlutterI18n.translate(context, "node.enter_note"),
                       border: OutlineInputBorder(
                           borderSide:
                           BorderSide(width: 1.0, color: Colors.amber))),

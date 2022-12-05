@@ -1,0 +1,36 @@
+{
+  "login": {
+    "title": "Registro/Acceso",
+    "student_id": "Identificación del Estudiante",
+    "password": "Contraseña",
+    "login": "Inicio de sesión",
+    "register": "Registro",
+    "invalid": "Inválido",
+    "error": "Asegúrese de haber introducido los datos correctamente"
+  },
+
+  "register": {
+    "title": "Página De Registro",
+    "course": "Entrar En El Curso",
+    "error": "Asegúrese de rellenar todos los campos",
+    "success": "Cuenta creada"
+  },
+
+  "home": {
+    "title": "Página de inicio"
+  },
+
+  "map": {
+    "title": "Mis lugares de estudio favoritos",
+    "address": "Dirección",
+    "city": "Ciudad"
+  },
+
+  "node": {
+    "page_title": "Añadir nota",
+    "title": "Título",
+    "enter_title": "Introduzca un título",
+    "enter_note": "Introduzca aquí sus notas",
+    "view": "Ver/Modificar nota"
+  }
+}

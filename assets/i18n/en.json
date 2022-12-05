@@ -1,0 +1,36 @@
+{
+  "login": {
+    "title": "Register/Login",
+    "student_id": "Student ID",
+    "password": "Password",
+    "login": "Login",
+    "register": "Register",
+    "invalid": "Invalid",
+    "error": "Please make sure you have entered information correctly"
+  },
+
+  "register": {
+    "title": "Register Page",
+    "course": "Enter Course",
+    "error": "Make sure all fields are filled",
+    "success": "Account Created"
+  },
+
+  "home": {
+    "title": "Home Page"
+  },
+
+  "map": {
+    "title": "My Favorite Study Places",
+    "address": "Address",
+    "city": "City"
+  },
+
+  "node": {
+    "page_title": "Add Note",
+    "title": "Title",
+    "enter_title": "Enter a Title",
+    "enter_note": "Enter your notes here",
+    "view": "View/Edit Note"
+  }
+}

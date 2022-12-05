@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -119,7 +120,7 @@ class _MapPageState extends State<MapPage> {
           ),
           Container(
             margin: const EdgeInsets.only(top: 5),
-            child: const Text('My Favorite Study Places',
+            child: Text(FlutterI18n.translate(context, "map.title"),
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 20,
@@ -131,12 +132,12 @@ class _MapPageState extends State<MapPage> {
           Container(
             /*scrollDirection: Axis.vertical,*/
             child: DataTable(
-              columns: const <DataColumn>[
+              columns: <DataColumn>[
                 DataColumn(
-                    label: Text('Address')
+                    label: Text(FlutterI18n.translate(context, "map.address"))
                 ),
                 DataColumn(
-                    label: Text('City')
+                    label: Text(FlutterI18n.translate(context, "map.city"))
                 ),
               ],
                 rows: location_list.map((location) => DataRow(

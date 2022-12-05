@@ -4,6 +4,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 class RegisterPage extends StatelessWidget {
   String? sid;
@@ -20,20 +21,23 @@ class RegisterPage extends StatelessWidget {
 
   bool check = false;
 
-  static const snackBar = SnackBar(
-    content: Text('Account Created'),
-  );
-
-  static const snackBar_error = SnackBar(
-    content: Text('Make sure all fields are filled'),
-  );
 
   @override
   Widget build(BuildContext context) {
+
+
+    var snackBar = SnackBar(
+      content: Text(FlutterI18n.translate(context, "register.success")),
+    );
+
+    var snackBar_error = SnackBar(
+      content: Text(FlutterI18n.translate(context, "register.error")),
+    );
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Register Page'),
+        title: Text(FlutterI18n.translate(context, "register.title")),
       ),
       body: Container(
         alignment: Alignment.center,
@@ -50,7 +54,7 @@ class RegisterPage extends StatelessWidget {
                 controller: _course1,
                 decoration: InputDecoration(
                   icon: Icon(Icons.app_registration),
-                  labelText: 'Enter Course 1',
+                  labelText: '${FlutterI18n.translate(context, "register.course")} 1',
                   errorText: check ? 'There is a missing field' : null
                 ),
               ),
@@ -62,7 +66,7 @@ class RegisterPage extends StatelessWidget {
                 controller: _course2,
                 decoration: InputDecoration(
                   icon: Icon(Icons.app_registration),
-                  labelText: 'Enter Course 2',
+                  labelText: '${FlutterI18n.translate(context, "register.course")} 2',
                     errorText: check ? 'There is a missing field' : null
                 ),
               ),
@@ -74,7 +78,7 @@ class RegisterPage extends StatelessWidget {
                 controller: _course3,
                 decoration: InputDecoration(
                   icon: Icon(Icons.app_registration),
-                  labelText: 'Enter Course 3',
+                  labelText: '${FlutterI18n.translate(context, "register.course")} 3',
                     errorText: check ? 'There is a missing field' : null
                 ),
               ),
@@ -86,7 +90,7 @@ class RegisterPage extends StatelessWidget {
                 controller: _course4,
                 decoration: InputDecoration(
                   icon: Icon(Icons.app_registration),
-                  labelText: 'Enter Course 4',
+                  labelText: '${FlutterI18n.translate(context, "register.course")} 4',
                     errorText: check ? 'There is a missing field' : null
                 ),
               ),
@@ -98,7 +102,7 @@ class RegisterPage extends StatelessWidget {
                 controller: _course5,
                 decoration: InputDecoration(
                   icon: Icon(Icons.app_registration),
-                  labelText: 'Enter Course 5',
+                  labelText: '${FlutterI18n.translate(context, "register.course")} 5',
                     errorText: check ? 'There is a missing field' : null
                 ),
               ),
@@ -117,7 +121,7 @@ class RegisterPage extends StatelessWidget {
                     check = true;
                   }
                 },
-                child: const Text('Register'),
+                child: Text(FlutterI18n.translate(context, "login.register")),
               ),
             ),
           ],

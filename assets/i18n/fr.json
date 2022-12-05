@@ -1,0 +1,36 @@
+{
+  "login": {
+    "title": "Inscription/Connexion",
+    "student_id": "Carte d'étudiant",
+    "password": "Mot de Passe",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "invalid": "Invalide",
+    "error": "Veuillez vous assurer que vous avez saisi les informations correctement"
+  },
+
+  "register": {
+    "title": "Page D'Enregistrement",
+    "course": "Entrer Le Cours",
+    "error": "Vérifiez que tous les champs sont remplis",
+    "success": "Compte crée"
+  },
+
+  "home": {
+    "title": "Page D'Accueil"
+  },
+
+  "map": {
+    "title": "Mes lieux d'étude préférés",
+    "address": "Adresse",
+    "city": "Ville"
+  },
+
+  "node": {
+    "page_title": "Ajouter une note",
+    "title": "Titre",
+    "enter_title": "Entrez un titre",
+    "enter_note": "Entrez vos note ici",
+    "view": "Afficher/Modifier la note"
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:untitled1/Pages/MapPage.dart';
 import '../Notes Handling/NoteDetails.dart';
 import '../Notes Handling/Notes.dart';
@@ -37,7 +38,7 @@ class _CoursesPageState extends State<CoursesPage> {
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: const Text('Home Page'),
+            title: Text(FlutterI18n.translate(context, "home.title")),
             bottom: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.note)),

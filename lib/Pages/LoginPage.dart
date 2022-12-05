@@ -7,6 +7,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled1/Pages/HomePage.dart';
 import 'RegisterPage.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class loginPage extends StatefulWidget {
   loginPage({Key? key, this.position}) : super(key: key);
@@ -33,12 +36,14 @@ class _loginPageState extends State<loginPage> {
   List courses = [];
 
 
-  static const snackBar = SnackBar(
-    content: Text('Please make sure you have entered information correctly'),
-  );
 
   @override
   Widget build(BuildContext context) {
+
+    SnackBar snackBar = SnackBar(
+      content: Text(FlutterI18n.translate(context, "login.error")),
+    );
+
     return Container(
       alignment: Alignment.center,
       child: Column(
@@ -56,8 +61,8 @@ class _loginPageState extends State<loginPage> {
               controller: _studentIDController,
               decoration: InputDecoration(
                 icon: Icon(Icons.person),
-                labelText: 'Banner/Student ID',
-                errorText: _validate_sid ? 'Invalid' : null,
+                labelText: FlutterI18n.translate(context, "login.student_id"),
+                errorText: _validate_sid ? FlutterI18n.translate(context, "login.invalid") : null,
               ),
             ),
           ),
@@ -71,8 +76,8 @@ class _loginPageState extends State<loginPage> {
               autocorrect: false,
               decoration: InputDecoration(
                 icon: Icon(Icons.key),
-                labelText: 'Password',
-                errorText: _validate_pass ? 'Invalid' : null,
+                labelText: FlutterI18n.translate(context, "login.password"),
+                errorText: _validate_pass ? FlutterI18n.translate(context, "login.invalid") : null,
               ),
             ),
           ),
@@ -102,7 +107,7 @@ class _loginPageState extends State<loginPage> {
                 }
 
               },
-              child: const Text("Login"),
+              child: Text(FlutterI18n.translate(context, "login.login")),
             ),
           ),
           Container(
@@ -125,7 +130,7 @@ class _loginPageState extends State<loginPage> {
                   });
                 }
               },
-              child: const Text("Register"),
+              child: Text(FlutterI18n.translate(context, "login.register")),
             ),
           ),
         ],
@@ -149,6 +154,7 @@ class _loginPageState extends State<loginPage> {
         for (int i = 0; i < querySnapshot.docs.length; i++){
           courses.add(querySnapshot.docs[index].get('courses'));
         }
+        print(position);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'Notes.dart';
 import '../Notification Handling/Notifications_file.dart';
 
@@ -31,7 +32,7 @@ class _EditNoteState extends State<EditNote> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('View/Edit Note'),
+        title: Text(FlutterI18n.translate(context, "node.view")),
       ),
       body: Container(
         margin: EdgeInsets.all(15),
