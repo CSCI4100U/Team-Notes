@@ -1,8 +1,10 @@
-
 import 'dart:io';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart';
+
+//Original Author: Michael Miljanovic
+//Code was pulled from https://github.com/CSCI4100U/LectureExamples2022/blob/main/Lecture%206a%20-%20Snackbars%20and%20Notifications/notifications.dart
+
 
 class Notifications{
 
