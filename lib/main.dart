@@ -9,6 +9,21 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 Future main() async{
+
+  Geolocator.isLocationServiceEnabled().then((value) => null);
+  Geolocator.requestPermission().then((value) => null);
+  Geolocator.checkPermission().then(
+          (LocationPermission permission)
+      {
+      }
+  );
+  Geolocator.getPositionStream(
+    locationSettings: const LocationSettings(
+        accuracy: LocationAccuracy.best
+    ),
+  ).listen((event) { });
+
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   var position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
